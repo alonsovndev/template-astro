@@ -1,0 +1,20 @@
+name: CI
+on:
+  pull_request:
+    branches: [main, dev]
+    types: [opened, edited, synchronize, reopened]
+  push:
+    branches: [main, dev]
+permissions:
+  contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+jobs:
+  frontend:
+    uses: alonsovndev/github-workflows/.github/workflows/frontend-ci.yml@59c9754ba4a9dcb6628ac78746c4002f99d1202a
+    with:
+      e2e: true
+  pr-title:
+    if: github.event_name == 'pull_request'
+    uses: alonsovndev/github-workflows/.github/workflows/pr-title.yml@59c9754ba4a9dcb6628ac78746c4002f99d1202a
