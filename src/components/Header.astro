@@ -1,0 +1,18 @@
+---
+import { siteContent } from "../config/site";
+---
+
+<header class="site-header container">
+  <a class="wordmark" href="/" aria-label={`${siteContent.name} home`}>
+    <span class="brand-mark" aria-hidden="true"></span>
+    {siteContent.name}
+  </a>
+  <nav aria-label="Main navigation">
+    {siteContent.navigation.map((link) => (
+      <a href={link.href}>{link.label}</a>
+    ))}
+    <a class="nav-contact" href="/#contact">
+      {siteContent.contactLabel} <span aria-hidden="true">↗</span>
+    </a>
+  </nav>
+</header>

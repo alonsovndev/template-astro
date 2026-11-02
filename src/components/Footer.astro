@@ -1,0 +1,13 @@
+---
+import { siteContent } from "../config/site";
+---
+
+<footer class="site-footer container">
+  <a class="wordmark" href="/">
+    {siteContent.name}
+  </a>
+  <p>{siteContent.footer.tagline}</p>
+  <a href={`mailto:${siteContent.contactEmail}`}>
+    {siteContent.footer.emailLabel} <span aria-hidden="true">↗</span>
+  </a>
+</footer>
